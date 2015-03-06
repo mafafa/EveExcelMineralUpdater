@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Xml;
 using Core;
 using Core.Exceptions;
 using Data;
+using Data.APIRequests;
 using EveExcelMineralUpdater.Views;
 
 namespace EveExcelMineralUpdater
@@ -20,6 +22,7 @@ namespace EveExcelMineralUpdater
     {
         private void App_OnStartup(object sender, StartupEventArgs e)
         {
+            // We read settings from CfgFile
             XMLCfgFile cfgFile = new XMLCfgFile();
             CfgFileSerializer cfgSerializer = new CfgFileSerializer(cfgFile);
 
@@ -27,7 +30,7 @@ namespace EveExcelMineralUpdater
             {
                 try
                 {
-                    cfgSerializer.LoadFile();
+                    cfgSerializer.Load();
                 }
                 catch (CfgFileNotWellDefinedException exception)
                 {
@@ -43,10 +46,24 @@ namespace EveExcelMineralUpdater
             {
                 cfgSerializer.CreateDefaultConfigFile();
             }
+
+            // We initiate the request from prices
+            QuickLookRequest quickLookRequest = (QuickLookRequest)ApiRequestFactory.CreateApiRequest(ApiRequestFactory.ApiRequestType.QuickLook);
+            quickLookRequest.UseSystem = EveItemIDs.JITA_SYSTEM_ID;
+            quickLookRequest.TypeID = EveItemIDs.VELDSPAR_MINERAL_ID;
+
+            Stream responseStream = quickLookRequest.HttpRequest.GetResponse().GetResponseStream();
+
+            // We write the prices into Excel
+            StreamReader streamReader = new StreamReader(responseStream);
+
+            Console.Out.WriteLine(streamReader.ReadToEnd());
             
             // Show main window
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
+            //MainWindow mainWindow = new MainWindow();
+            //mainWindow.Show();
+
+            System.Environment.Exit(0);
         }
     }
 }

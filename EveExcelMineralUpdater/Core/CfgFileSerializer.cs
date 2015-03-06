@@ -10,7 +10,7 @@ using Data;
 
 namespace Core
 {
-    public class CfgFileSerializer
+    public class CfgFileSerializer : ISerializer
     {
         private XMLCfgFile _cfgFile;
         
@@ -19,18 +19,20 @@ namespace Core
             _cfgFile = cfgFile;
         }
 
-        public void SaveFile()
+        public void Save()
         {
             XmlDocument doc = new XmlDocument();
             doc.Load(CFGFile.ConfigFilePath);
 
             doc.SelectSingleNode(Constants.EXCEL_FILEPATH_XML_NODE_NAME).InnerText = CFGFile.ExcelFilePath;
-            doc.SelectSingleNode(Constants.EXCEL_PRICE_COLUMN_NAME_XML_NODE_NAME).InnerText = CFGFile.ExcelFilePath;
+            doc.SelectSingleNode(Constants.EXCEL_PRICE_COLUMN_XML_NODE_NAME).InnerText = CFGFile.ExcelPriceColumn;
+            doc.SelectSingleNode(Constants.EXCEL_PRICE_ROW_START_XML_NODE_NAME).InnerText = CFGFile.ExcelPriceRowStart.ToString();
+            doc.SelectSingleNode(Constants.EXCEL_PRICE_ROW_END_XML_NODE_NAME).InnerText = CFGFile.ExcelPriceRowEnd.ToString();
 
             doc.Save(CFGFile.ConfigFilePath);
         }
 
-        public void LoadFile()
+        public void Load()
         {
             XmlDocument doc = new XmlDocument();
             doc.Load(CFGFile.ConfigFilePath);
@@ -43,13 +45,49 @@ namespace Core
             }
             CFGFile.ExcelFilePath = excelFilePathNode[Constants.EXCEL_FILEPATH_XML_NODE_NAME].InnerText;
 
-            XmlNode excelPriceColumnNameNode = doc.SelectSingleNode(Constants.EXCEL_PRICE_COLUMN_NAME_XML_NODE_NAME);
-            if (excelPriceColumnNameNode == null)
+            XmlNode excelPriceColumnNode = doc.SelectSingleNode(Constants.EXCEL_PRICE_COLUMN_XML_NODE_NAME);
+            if (excelPriceColumnNode == null)
             {
                 throw new CfgFileNotWellDefinedException("settings.cfg file not well defined. A default one shall " +
                                                          "be created now.");
             }
-            CFGFile.ExcelPriceColumnName = excelPriceColumnNameNode[Constants.EXCEL_PRICE_COLUMN_NAME_XML_NODE_NAME].InnerText;
+            CFGFile.ExcelPriceColumn = excelPriceColumnNode[Constants.EXCEL_PRICE_COLUMN_XML_NODE_NAME].InnerText;
+
+            XmlNode excelPriceRowStartNode = doc.SelectSingleNode(Constants.EXCEL_PRICE_ROW_START_XML_NODE_NAME);
+            if (excelPriceRowStartNode == null)
+            {
+                throw new CfgFileNotWellDefinedException("settings.cfg file not well defined. A default one shall " +
+                                                         "be created now.");
+            }
+            UInt64 rowStart;
+            if (UInt64.TryParse(excelPriceRowStartNode[Constants.EXCEL_PRICE_ROW_START_XML_NODE_NAME].InnerText,
+                out rowStart))
+            {
+                CFGFile.ExcelPriceRowStart = rowStart;
+            }
+            else
+            {
+                throw new CfgFileNotWellDefinedException("settings.cfg file not well defined. A default one shall " +
+                                                         "be created now.");
+            }
+
+            XmlNode excelPriceRowEndNode = doc.SelectSingleNode(Constants.EXCEL_PRICE_ROW_END_XML_NODE_NAME);
+            if (excelPriceRowEndNode == null)
+            {
+                throw new CfgFileNotWellDefinedException("settings.cfg file not well defined. A default one shall " +
+                                                         "be created now.");
+            }
+            UInt64 rowEnd;
+            if (UInt64.TryParse(excelPriceRowEndNode[Constants.EXCEL_PRICE_ROW_END_XML_NODE_NAME].InnerText,
+                out rowEnd))
+            {
+                CFGFile.ExcelPriceRowEnd = rowEnd;
+            }
+            else
+            {
+                throw new CfgFileNotWellDefinedException("settings.cfg file not well defined. A default one shall " +
+                                                         "be created now.");
+            }
         }
 
         public void CreateDefaultConfigFile()
@@ -66,9 +104,17 @@ namespace Core
             excelFilePathNode.InnerText = Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location) + @"\Minerals.xlsx";
             settingsNode.AppendChild(excelFilePathNode);
 
-            XmlNode excelPriceColumnNameNode = doc.CreateElement(Constants.EXCEL_PRICE_COLUMN_NAME_XML_NODE_NAME);
-            excelPriceColumnNameNode.InnerText = @"Price/unit";
-            settingsNode.AppendChild(excelPriceColumnNameNode);
+            XmlNode excelPriceColumnNode = doc.CreateElement(Constants.EXCEL_PRICE_COLUMN_XML_NODE_NAME);
+            excelPriceColumnNode.InnerText = "A";
+            settingsNode.AppendChild(excelPriceColumnNode);
+
+            XmlNode excelPriceRowStartNode = doc.CreateElement(Constants.EXCEL_PRICE_ROW_START_XML_NODE_NAME);
+            excelPriceRowStartNode.InnerText = "1";
+            settingsNode.AppendChild(excelPriceRowStartNode);
+
+            XmlNode excelPriceRowEndNode = doc.CreateElement(Constants.EXCEL_PRICE_ROW_END_XML_NODE_NAME);
+            excelPriceRowEndNode.InnerText = "2";
+            settingsNode.AppendChild(excelPriceRowEndNode);
 
             doc.Save(CFGFile.ConfigFilePath);
         }

@@ -39,8 +39,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiRequestFactory.cs" />
     <Compile Include="CfgFileSerializer.cs" />
     <Compile Include="Exceptions\CfgFileNotWellDefinedException.cs" />
+    <Compile Include="Exceptions\MissingRequiredParameterException.cs" />
+    <Compile Include="ISerializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

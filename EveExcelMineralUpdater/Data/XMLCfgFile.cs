@@ -15,13 +15,17 @@ namespace Data
     {
         private readonly String _configFilePath;
         private String _excelFilePath;
-        private String _excelPriceColumnName;
+        private String _excelPriceColumn;
+        private UInt64 _excelPriceRowStart;
+        private UInt64 _excelPriceRowEnd;
         
-        public XMLCfgFile() : base()
+        public XMLCfgFile()
         {
             _configFilePath = Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location) + @"\settings.cfg"; ;
             ExcelFilePath = null;
-            ExcelPriceColumnName = null;
+            ExcelPriceColumn = "A";
+            ExcelPriceRowStart = 1;
+            ExcelPriceRowEnd = 2;
         }
 
         public String ConfigFilePath
@@ -42,14 +46,40 @@ namespace Data
             }
         }
 
-        public String ExcelPriceColumnName
+        public String ExcelPriceColumn
         {
-            get { return _excelPriceColumnName; }
+            get { return _excelPriceColumn; }
             set
             {
-                if (_excelPriceColumnName != value)
+                if (_excelPriceColumn != value)
                 {
-                    _excelPriceColumnName = value;
+                    _excelPriceColumn = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        public UInt64 ExcelPriceRowStart
+        {
+            get { return _excelPriceRowStart; }
+            set
+            {
+                if (_excelPriceRowStart != value)
+                {
+                    _excelPriceRowStart = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        public UInt64 ExcelPriceRowEnd
+        {
+            get { return _excelPriceRowEnd; }
+            set
+            {
+                if (_excelPriceRowEnd != value)
+                {
+                    _excelPriceRowEnd = value;
                     RaisePropertyChanged();
                 }
             }
