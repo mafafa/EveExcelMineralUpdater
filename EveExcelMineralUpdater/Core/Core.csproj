@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiHttpRequestBuilder.cs" />
     <Compile Include="ApiRequestFactory.cs" />
     <Compile Include="CfgFileSerializer.cs" />
     <Compile Include="Exceptions\CfgFileNotWellDefinedException.cs" />

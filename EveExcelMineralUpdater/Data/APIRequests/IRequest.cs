@@ -12,7 +12,9 @@ namespace Data.APIRequests
     {
         ReturnDataType DataReturnType { get; }
         
-        HttpWebRequest HttpRequest { get; }
+        //HttpWebRequest HttpRequest { get; }
+
+        String RequestURL { get; }
     }
     
     public enum ReturnDataType

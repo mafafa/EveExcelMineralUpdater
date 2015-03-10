@@ -52,13 +52,17 @@ namespace EveExcelMineralUpdater
             quickLookRequest.UseSystem = EveItemIDs.JITA_SYSTEM_ID;
             quickLookRequest.TypeID = EveItemIDs.VELDSPAR_MINERAL_ID;
 
-            Stream responseStream = quickLookRequest.HttpRequest.GetResponse().GetResponseStream();
+            ApiHttpRequestBuilder requestBuilder = new ApiHttpRequestBuilder(quickLookRequest);
 
-            // We write the prices into Excel
-            StreamReader streamReader = new StreamReader(responseStream);
+            if (requestBuilder.ExecuteRequest())
+            {
+                Console.Out.WriteLine(requestBuilder.Response);
+            }
+            else
+            {
+                Console.Out.WriteLine("Error in getting request's response from the API web server.");
+            }
 
-            Console.Out.WriteLine(streamReader.ReadToEnd());
-            
             // Show main window
             //MainWindow mainWindow = new MainWindow();
             //mainWindow.Show();

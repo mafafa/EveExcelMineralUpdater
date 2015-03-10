@@ -27,16 +27,12 @@ namespace Data.APIRequests
             get { return ReturnDataType.Xml; }
         }
 
-        public HttpWebRequest HttpRequest
+        public String RequestURL
         {
             get
             {
                 String url = Constants.EVECENTRAL_API_BASE_URL + Constants.QUICKLOOK_HTTP_QUERY_URL;
 
-                if (TypeID == uint.MaxValue)
-                {
-                    // TODO: Deal with exception
-                }
                 if (RegionLimit != uint.MaxValue)
                 {
                     url += "regionlimit=" + RegionLimit;
@@ -49,7 +45,7 @@ namespace Data.APIRequests
                 url += "&sethours=" + SetHours;
                 url += "&typeid=" + TypeID;
 
-                return (HttpWebRequest) WebRequest.Create(url);
+                return url;
             }
         }
 

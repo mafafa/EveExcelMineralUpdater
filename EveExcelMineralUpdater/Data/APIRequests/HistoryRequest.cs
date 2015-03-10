@@ -13,7 +13,7 @@ namespace Data.APIRequests
             get { throw new NotImplementedException(); }
         }
 
-        public System.Net.HttpWebRequest HttpRequest
+        public String RequestURL
         {
             get { throw new NotImplementedException(); }
         }
