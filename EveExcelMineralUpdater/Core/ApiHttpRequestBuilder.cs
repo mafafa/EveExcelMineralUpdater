@@ -43,8 +43,11 @@ namespace Core
 
         private bool IsURLValid(String url)
         {
+            Uri urlUri = new Uri(url);
+            
             // We verify that the url is well constructed
-            if (Uri.IsWellFormedUriString(url, UriKind.Absolute))
+            if (Uri.IsWellFormedUriString(url, UriKind.Absolute) &&
+                (urlUri.Scheme == Uri.UriSchemeHttp || urlUri.Scheme == Uri.UriSchemeHttps))
             {
                 // We verify if the status code is ok
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
