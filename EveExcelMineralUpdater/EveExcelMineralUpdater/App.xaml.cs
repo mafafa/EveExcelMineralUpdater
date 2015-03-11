@@ -23,7 +23,7 @@ namespace EveExcelMineralUpdater
         private void App_OnStartup(object sender, StartupEventArgs e)
         {
             // We read settings from CfgFile
-            XMLCfgFile cfgFile = new XMLCfgFile();
+            XmlCfgFile cfgFile = new XmlCfgFile();
             CfgFileSerializer cfgSerializer = new CfgFileSerializer(cfgFile);
 
             if (File.Exists(cfgFile.ConfigFilePath))

@@ -12,9 +12,9 @@ namespace Core
 {
     public class CfgFileSerializer : ISerializer
     {
-        private XMLCfgFile _cfgFile;
+        private XmlCfgFile _cfgFile;
         
-        public CfgFileSerializer(XMLCfgFile cfgFile)
+        public CfgFileSerializer(XmlCfgFile cfgFile)
         {
             _cfgFile = cfgFile;
         }
@@ -121,7 +121,7 @@ namespace Core
             doc.Save(CFGFile.ConfigFilePath);
         }
 
-        public XMLCfgFile CFGFile
+        public XmlCfgFile CFGFile
         {
             get { return _cfgFile; }
         }

@@ -11,7 +11,7 @@ using Data.NotifyProperty;
 
 namespace Data
 {
-    public class XMLCfgFile : BindableObject
+    public class XmlCfgFile : BindableObject
     {
         private readonly String _configFilePath;
         private String _excelFilePath;
@@ -19,7 +19,7 @@ namespace Data
         private UInt64 _excelPriceRowStart;
         private UInt64 _excelPriceRowEnd;
         
-        public XMLCfgFile()
+        public XmlCfgFile()
         {
             _configFilePath = Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location) + @"\settings.cfg"; ;
             ExcelFilePath = null;

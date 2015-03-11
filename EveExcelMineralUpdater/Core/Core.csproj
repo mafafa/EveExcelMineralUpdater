@@ -44,8 +44,11 @@
     <Compile Include="CfgFileSerializer.cs" />
     <Compile Include="Exceptions\CfgFileNotWellDefinedException.cs" />
     <Compile Include="Exceptions\MissingRequiredParameterException.cs" />
+    <Compile Include="IApiRequestResponseParser.cs" />
     <Compile Include="ISerializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="XmlRequestResponseParser.cs" />
+    <Compile Include="JsonApiResponseParser.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Data\Data.csproj">
