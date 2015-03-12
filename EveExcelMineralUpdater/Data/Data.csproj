@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="APIRequests\ParsedApiResponse.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="APIRequests\EvemonRequest.cs" />
     <Compile Include="APIRequests\HistoryRequest.cs" />

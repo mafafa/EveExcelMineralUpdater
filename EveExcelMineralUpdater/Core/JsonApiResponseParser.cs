@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Data.APIRequests;
 
 namespace Core
 {
@@ -18,7 +19,12 @@ namespace Core
             throw new NotImplementedException();
         }
 
-        public List<string> Parse()
+        public void ReinitialiseFilters()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Parse()
         {
             throw new NotImplementedException();
         }
@@ -36,6 +42,16 @@ namespace Core
         }
 
         public string RawRequestResponse
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public List<ParsedApiAnswer> ParsedResponsesList
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public bool HasParsedSinceLastFilterAddOrRemove
         {
             get { throw new NotImplementedException(); }
         }

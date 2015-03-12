@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using Data.APIRequests;
 
 namespace Core
 {
@@ -13,10 +14,16 @@ namespace Core
 
         bool RemoveFilter(String filter);
 
-        List<String> Parse();
+        void ReinitialiseFilters();
+
+        void Parse();
         
         List<String> Filters { get; set; }
 
         String RawRequestResponse { get; }
+
+        List<ParsedApiAnswer> ParsedResponsesList { get; }
+
+        bool HasParsedSinceLastFilterAddOrRemove { get; }
     }
 }

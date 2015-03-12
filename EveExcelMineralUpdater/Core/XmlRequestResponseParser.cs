@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Data.APIRequests;
 
 namespace Core
 {
@@ -10,10 +11,12 @@ namespace Core
     {
         private List<String> _filters;
         private String _rawRequestResponse;
+        private List<ParsedApiAnswer> _parsedResponsesList;
         
         public XmlRequestResponseParser(String rawResponse)
         {
             Filters = new List<String>();
+            _parsedResponsesList = new List<ParsedApiAnswer>();
             
             _rawRequestResponse = rawResponse;
         }
@@ -21,6 +24,7 @@ namespace Core
         public XmlRequestResponseParser(String rawResponse, String filter)
         {
             Filters = new List<String>();
+            _parsedResponsesList = new List<ParsedApiAnswer>();
 
             Filters.Add(filter);
             _rawRequestResponse = rawResponse;
@@ -29,6 +33,7 @@ namespace Core
         public XmlRequestResponseParser(String rawResponse, IEnumerable<String> filters)
         {
             Filters = new List<String>(filters);
+            _parsedResponsesList = new List<ParsedApiAnswer>();
 
             _rawRequestResponse = rawResponse;
         }
@@ -52,9 +57,24 @@ namespace Core
             return Filters.Remove(filter);
         }
 
-        public List<String> Parse()
+        public void ReinitialiseFilters()
         {
+            Filters = new List<String>();
+        }
+
+        public void Parse()
+        {
+            // Reinitialise the ParsedApiAnswer list
+            _parsedResponsesList = new List<ParsedApiAnswer>();
             
+            // Parse for each filter
+            foreach (String filters in Filters)
+            {
+                
+            }
+
+            // Order by filter so the two lists are synced
+
         }
 
         public List<String> Filters
@@ -66,6 +86,26 @@ namespace Core
         public String RawRequestResponse
         {
             get { return _rawRequestResponse; }
+        }
+
+        public List<ParsedApiAnswer> ParsedResponsesList
+        {
+            get { return _parsedResponsesList; }
+        }
+
+        public bool HasParsedSinceLastFilterAddOrRemove
+        {
+            get
+            {
+                if (Filters.Count != ParsedResponsesList.Count)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
         }
     }
 }
