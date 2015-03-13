@@ -16,5 +16,7 @@ namespace Data
         public const String EXCEL_PRICE_COLUMN_XML_NODE_NAME = "excelPriceColumn";
         public const String EXCEL_PRICE_ROW_START_XML_NODE_NAME = "excelPriceRowStart";
         public const String EXCEL_PRICE_ROW_END_XML_NODE_NAME = "excelPriceRowEnd";
+
+        public const String API_RESPONSE_PRICE_XML_NODE_PATH = "evec_api/quicklook/price";
     }
 }

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
+using System.Xml.XPath;
+using Data;
 using Data.APIRequests;
 
 namespace Core
@@ -67,14 +70,37 @@ namespace Core
             // Reinitialise the ParsedApiAnswer list
             _parsedResponsesList = new List<ParsedApiAnswer>();
             
-            // Parse for each filter
-            foreach (String filters in Filters)
+            // We create the Xml structure from the raw response
+            XmlDocument xmlDocument = new XmlDocument();
+
+            try
             {
-                
+                xmlDocument.LoadXml(RawRequestResponse);
             }
+            catch (XmlException ex)
+            {
+                throw new XmlException("Xml raw response not properly formed. An error probably occured in the " + 
+                    "reception of the response from the API server.");
+            }
+            
+            // Parse for each filter
+            foreach (String filter in Filters)
+            {
+                try
+                {
+                    XmlNode excelFilePathNode = xmlDocument.SelectSingleNode(filter);
 
-            // Order by filter so the two lists are synced
-
+                    _parsedResponsesList.Add(new ParsedApiAnswer(filter, excelFilePathNode.InnerText));
+                }
+                catch (NullReferenceException ex)
+                {
+                    throw new NullReferenceException("Could not parse the following filter: " + filter);
+                }
+                catch (XPathException ex)
+                {
+                    throw new XmlException("Could not parse the following filter: " + filter);
+                }
+            }
         }
 
         public List<String> Filters

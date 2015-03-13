@@ -56,7 +56,15 @@ namespace EveExcelMineralUpdater
 
             if (requestBuilder.ExecuteRequest())
             {
-                Console.Out.WriteLine(requestBuilder.Response);
+                XmlRequestResponseParser rawResponseParser = new XmlRequestResponseParser(requestBuilder.Response, 
+                    Constants.API_RESPONSE_PRICE_XML_NODE_PATH);
+
+                rawResponseParser.Parse();
+
+                foreach (ParsedApiAnswer parsedAnswer in rawResponseParser.ParsedResponsesList)
+                {
+                    Console.Out.WriteLine(parsedAnswer);
+                }
             }
             else
             {

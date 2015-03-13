@@ -77,7 +77,6 @@ namespace Core
         public IRequest Request
         {
             get { return _request; }
-            set { _request = value; }
         }
 
         public String Response
