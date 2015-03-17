@@ -12,63 +12,20 @@ namespace Core
 {
     public class XmlRequestResponseParser : IApiRequestResponseParser
     {
-        private List<String> _filters;
         private String _rawRequestResponse;
-        private List<ParsedApiAnswer> _parsedResponsesList;
+        private List<MarketOrder> _parsedMarketOrders;
         
         public XmlRequestResponseParser(String rawResponse)
         {
-            Filters = new List<String>();
-            _parsedResponsesList = new List<ParsedApiAnswer>();
+            _parsedMarketOrders = new List<MarketOrder>();
             
             _rawRequestResponse = rawResponse;
-        }
-
-        public XmlRequestResponseParser(String rawResponse, String filter)
-        {
-            Filters = new List<String>();
-            _parsedResponsesList = new List<ParsedApiAnswer>();
-
-            Filters.Add(filter);
-            _rawRequestResponse = rawResponse;
-        }
-
-        public XmlRequestResponseParser(String rawResponse, IEnumerable<String> filters)
-        {
-            Filters = new List<String>(filters);
-            _parsedResponsesList = new List<ParsedApiAnswer>();
-
-            _rawRequestResponse = rawResponse;
-        }
-
-        public bool AddFilter(String filter)
-        {
-            if (!Filters.Contains(filter))
-            {
-                Filters.Add(filter);
-                
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        public bool RemoveFilter(String filter)
-        {
-            return Filters.Remove(filter);
-        }
-
-        public void ReinitialiseFilters()
-        {
-            Filters = new List<String>();
         }
 
         public void Parse()
         {
             // Reinitialise the ParsedApiAnswer list
-            _parsedResponsesList = new List<ParsedApiAnswer>();
+            _parsedMarketOrders = new List<MarketOrder>();
             
             // We create the Xml structure from the raw response
             XmlDocument xmlDocument = new XmlDocument();
@@ -82,31 +39,58 @@ namespace Core
                 throw new XmlException("Xml raw response not properly formed. An error probably occured in the " + 
                     "reception of the response from the API server.");
             }
-            
-            // Parse for each filter
-            foreach (String filter in Filters)
-            {
-                try
-                {
-                    XmlNode excelFilePathNode = xmlDocument.SelectSingleNode(filter);
 
-                    _parsedResponsesList.Add(new ParsedApiAnswer(filter, excelFilePathNode.InnerText));
-                }
-                catch (NullReferenceException ex)
+            // We go get each orders that the response sends us back
+            XmlNodeList orderNodeList;
+            try
+            {
+                orderNodeList = xmlDocument.SelectNodes(Constants.API_RESPONSE_BUY_ORDER_NODE_XPATH);
+            }
+            catch (XPathException ex)
+            {
+                throw new XPathException("The API's response does not contain any market orders that match " + 
+                    "the API request's parameters.");
+            }
+            
+            // Parse for each filter and order
+            if (orderNodeList != null && orderNodeList.Count != 0)
+            {
+                foreach (XmlNode orderNode in orderNodeList)
                 {
-                    throw new NullReferenceException("Could not parse the following filter: " + filter);
-                }
-                catch (XPathException ex)
-                {
-                    throw new XmlException("Could not parse the following filter: " + filter);
+                    try
+                    {
+                        UInt64 orderID;
+                        float price;
+                        UInt64 volumeRemaining;
+
+                        XmlNode priceNode = orderNode.SelectSingleNode(Constants.API_RESPONSE_PRICE_FILTER);
+                        XmlNode volumeRemainingNode =
+                            orderNode.SelectSingleNode(Constants.API_RESPONSE_VOL_REMAINING_FILTER);
+
+                        if (UInt64.TryParse(orderNode.Attributes["id"].Value, out orderID) &&
+                            float.TryParse(priceNode.InnerText, out price) &&
+                            UInt64.TryParse(volumeRemainingNode.InnerText, out volumeRemaining))
+                        {
+                            _parsedMarketOrders.Add(new MarketOrder((uint)orderID, price, (uint)volumeRemaining));
+                        }
+                    }
+                    catch (XPathException ex)
+                    {
+                        // TODO: Manage exceptions
+                        throw new XPathException();
+                    }
+                    catch (ArgumentException ex)
+                    {
+                        // TODO: Manage exceptions
+                        throw new ArgumentException();
+                    }
+                    catch (NullReferenceException ex)
+                    {
+                        // TODO: Manage exceptions
+                        throw new NullReferenceException();
+                    }
                 }
             }
-        }
-
-        public List<String> Filters
-        {
-            get { return _filters; }
-            set { _filters = value; }
         }
 
         public String RawRequestResponse
@@ -114,24 +98,9 @@ namespace Core
             get { return _rawRequestResponse; }
         }
 
-        public List<ParsedApiAnswer> ParsedResponsesList
+        public List<MarketOrder> ParsedMarketOrders
         {
-            get { return _parsedResponsesList; }
-        }
-
-        public bool HasParsedSinceLastFilterAddOrRemove
-        {
-            get
-            {
-                if (Filters.Count != ParsedResponsesList.Count)
-                {
-                    return false;
-                }
-                else
-                {
-                    return true;
-                }
-            }
+            get { return _parsedMarketOrders; }
         }
     }
 }

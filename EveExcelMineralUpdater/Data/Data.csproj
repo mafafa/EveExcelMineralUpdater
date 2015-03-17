@@ -39,7 +39,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="APIRequests\ParsedApiResponse.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="APIRequests\EvemonRequest.cs" />
     <Compile Include="APIRequests\HistoryRequest.cs" />
@@ -49,6 +48,7 @@
     <Compile Include="APIRequests\QuickLookRequest.cs" />
     <Compile Include="APIRequests\RouteRequest.cs" />
     <Compile Include="EveItemIDs.cs" />
+    <Compile Include="MarketOrder.cs" />
     <Compile Include="NotifyProperty\BindableObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="XmlCfgFile.cs" />
