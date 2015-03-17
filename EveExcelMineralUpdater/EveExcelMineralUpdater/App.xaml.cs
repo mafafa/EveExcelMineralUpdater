@@ -58,15 +58,13 @@ namespace EveExcelMineralUpdater
             {
                 XmlRequestResponseParser rawResponseParser = new XmlRequestResponseParser(requestBuilder.Response);
 
+                // We parse the answer and order it
                 rawResponseParser.Parse();
+                IOrderedEnumerable<MarketOrder> priceOrderedMarketOrders = rawResponseParser.ParsedMarketOrders.
+                    OrderByDescending(marketOrder => marketOrder.Price).ThenByDescending(marketOrder => marketOrder.VolumeRemaining);
 
-                foreach (MarketOrder parsedAnswer in rawResponseParser.ParsedMarketOrders)
-                {
-                    Console.Out.WriteLine(parsedAnswer);
-                }
+                // We take the highest priced item and write it to the excel spreadsheet
 
-                // DEBUG
-                //Console.Out.WriteLine(rawResponseParser.RawRequestResponse);
             }
             else
             {

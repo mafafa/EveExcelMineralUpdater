@@ -52,7 +52,7 @@ namespace Core
                     "the API request's parameters.");
             }
             
-            // Parse for each filter and order
+            // Parse
             if (orderNodeList != null && orderNodeList.Count != 0)
             {
                 foreach (XmlNode orderNode in orderNodeList)
