@@ -35,9 +35,6 @@ namespace EveExcelMineralUpdater
                 catch (CfgFileNotWellDefinedException exception)
                 {
                     //TODO: Show PopUpWindow with error message
-                }
-                finally
-                {
                     cfgSerializer.CreateDefaultConfigFile();
                 }
                 
