@@ -21,21 +21,15 @@ namespace Core
 
         private List<float> _priceList;
 
-        public XlsxSerializer(String xlsxFilePath, String pricecolumn, String startRow, String endRow)
+        public XlsxSerializer(String xlsxFilePath, String pricecolumn, int startRow, int endRow)
         {
             PriceList = new List<float>();
 
             _xlsxFilePath = xlsxFilePath;
 
             _priceColumn = pricecolumn;
-            if (!int.TryParse(startRow, out _startRow))
-            {
-                _startRow = -1;
-            }
-            if (!int.TryParse(endRow, out _endRow))
-            {
-                _endRow = -1;
-            }
+            _startRow = startRow;
+            _endRow = endRow;
 
             _excelApp = new Application();
             _excelApp.Visible = false;
@@ -44,21 +38,15 @@ namespace Core
             _lastRow = _excelWorksheet.Cells.SpecialCells(XlCellType.xlCellTypeLastCell).Row; 
         }
 
-        public XlsxSerializer(String xlsxFilePath, String pricecolumn, String startRow, String endRow, List<float> priceList)
+        public XlsxSerializer(String xlsxFilePath, String pricecolumn, int startRow, int endRow, List<float> priceList)
         {
             PriceList = priceList;
 
             _xlsxFilePath = xlsxFilePath;
 
             _priceColumn = pricecolumn;
-            if (!int.TryParse(startRow, out _startRow))
-            {
-                _startRow = -1;
-            }
-            if (!int.TryParse(endRow, out _endRow))
-            {
-                _endRow = -1;
-            }
+            _startRow = startRow;
+            _endRow = endRow;
 
             _excelApp = new Application();
             _excelApp.Visible = false;
@@ -74,14 +62,24 @@ namespace Core
                 int i = _startRow;
                 foreach (float price in PriceList)
                 {
-                    _excelWorksheet.Cells[i, _priceColumn] = price;
+                    _excelWorksheet.Cells[i, ExcelColumnToInt(_priceColumn)] = price;
                     i++;
                 }
+
+                _excelWorkbook.Save();
             }
             else
             {
                 // TODO: Manage error
             }
+            
+            _excelApp.Quit();
+        }
+
+        private int ExcelColumnToInt(String columnString)
+        {
+            return columnString.Select((c, i) =>
+                ((c - 'A' + 1) * ((int)Math.Pow(26, columnString.Length - i - 1)))).Sum();
         }
 
         public void Load()
