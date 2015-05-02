@@ -9,12 +9,12 @@ using Data.APIRequests;
 
 namespace Core
 {
-    public interface IApiRequestResponseParser
+    public interface IApiRequestResponseParser<T>
     {
         void Parse();
 
         String RawRequestResponse { get; }
 
-        List<MarketOrder> ParsedMarketOrders { get; }
+        List<T> ParsedMarketOrders { get; }
     }
 }

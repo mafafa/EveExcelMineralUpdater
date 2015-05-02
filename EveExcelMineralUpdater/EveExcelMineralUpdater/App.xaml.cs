@@ -70,7 +70,7 @@ namespace EveExcelMineralUpdater
 
                 if (requestBuilder.ExecuteRequest())
                 {
-                    XmlRequestResponseParser rawResponseParser = new XmlRequestResponseParser(requestBuilder.Response);
+                    QuickLookResponseParser rawResponseParser = new QuickLookResponseParser(requestBuilder.Response);
 
                     // We parse the answer and order it
                     rawResponseParser.Parse();

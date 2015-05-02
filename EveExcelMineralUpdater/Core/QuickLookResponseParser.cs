@@ -10,12 +10,12 @@ using Data.APIRequests;
 
 namespace Core
 {
-    public class XmlRequestResponseParser : IApiRequestResponseParser
+    public class QuickLookResponseParser : IApiRequestResponseParser<MarketOrder>
     {
         private String _rawRequestResponse;
         private List<MarketOrder> _parsedMarketOrders;
         
-        public XmlRequestResponseParser(String rawResponse)
+        public QuickLookResponseParser(String rawResponse)
         {
             _parsedMarketOrders = new List<MarketOrder>();
             

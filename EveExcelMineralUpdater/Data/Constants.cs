@@ -10,6 +10,7 @@ namespace Data
     {
         public const String EVECENTRAL_API_BASE_URL = @"http://api.eve-central.com/api";
         public const String QUICKLOOK_HTTP_QUERY_URL = @"/quicklook?";
+        public const String QUICKLOOK_ONPATH_HTTP_QUERY_URL = @"/quicklook/onpath/";
 
         public const String CFG_ROOT_XML_NODE_NAME = "settings";
         public const String CFG_EXCEL_FILEPATH_XML_NODE_NAME = "excelFilePath";
