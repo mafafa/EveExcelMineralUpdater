@@ -1,8 +1,25 @@
 ﻿<Window x:Class="EveExcelMineralUpdater.Views.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525">
+        xmlns:viewModels="clr-namespace:EveExcelMineralUpdater.ViewModels"
+        Title="MainWindow" Height="720" Width="1280">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="15*"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="85*"/>
+        </Grid.ColumnDefinitions>
         
+        <StackPanel Grid.Column="0">
+            <Button>MarketStat Request</Button>
+            <Button Command="{Binding ChangeToQuickLookCommand}">QuickLook Request</Button>
+            <Button>History Request</Button>
+            <Button>Route Request</Button>
+            <Button>Settings</Button>
+        </StackPanel>
+
+        <Separator Grid.Column="1" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+
+        <ContentControl Grid.Column="2" Content="{Binding CurrentViewModel}" />
     </Grid>
 </Window>

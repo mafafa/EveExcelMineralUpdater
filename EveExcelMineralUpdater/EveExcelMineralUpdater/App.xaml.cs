@@ -11,6 +11,7 @@ using Core;
 using Core.Exceptions;
 using Data;
 using Data.APIRequests;
+using EveExcelMineralUpdater.ViewModels;
 using EveExcelMineralUpdater.Views;
 
 namespace EveExcelMineralUpdater
@@ -23,7 +24,7 @@ namespace EveExcelMineralUpdater
         private void App_OnStartup(object sender, StartupEventArgs e)
         {
             // We read settings from CfgFile
-            XmlCfgFile cfgFile = new XmlCfgFile();
+            /*XmlCfgFile cfgFile = new XmlCfgFile();
             CfgFileSerializer cfgSerializer = new CfgFileSerializer(cfgFile);
 
             if (File.Exists(cfgFile.ConfigFilePath))
@@ -97,13 +98,19 @@ namespace EveExcelMineralUpdater
             XlsxSerializer excelSerializer = new XlsxSerializer(cfgFile.ExcelFilePath, cfgFile.ExcelPriceColumn, 
                 (int)cfgFile.ExcelPriceRowStart, (int)cfgFile.ExcelPriceRowEnd, priceList);
 
-            excelSerializer.Save();
+            excelSerializer.Save();*/
 
             // Show main window
-            //MainWindow mainWindow = new MainWindow();
-            //mainWindow.Show();
+            MainWindow mainWindow = new MainWindow();
+            MainViewModel mainViewModel = new MainViewModel();
+            mainWindow.DataContext = mainViewModel;
+            mainWindow.ViewModel = mainViewModel;
+            
+            FlowManager.Instance.AppWindow = mainWindow;
+            
+            mainWindow.Show();
 
-            System.Environment.Exit(0);
+            //System.Environment.Exit(0);
         }
     }
 }

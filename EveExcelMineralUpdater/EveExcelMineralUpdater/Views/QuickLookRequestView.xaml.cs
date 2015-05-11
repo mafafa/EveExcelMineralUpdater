@@ -12,17 +12,26 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using EveExcelMineralUpdater.ViewModels;
 
 namespace EveExcelMineralUpdater.Views
 {
     /// <summary>
-    /// Interaction logic for PopUpWindow.xaml
+    /// Interaction logic for QuickLookRequestView.xaml
     /// </summary>
-    public partial class PopUpWindow : UserControl
+    public partial class QuickLookRequestView : UserControl, IView<QuickLookRequestViewModel>
     {
-        public PopUpWindow()
+        private QuickLookRequestViewModel _viewModel;
+        
+        public QuickLookRequestView()
         {
             InitializeComponent();
+        }
+
+        public QuickLookRequestViewModel ViewModel
+        {
+            get { return _viewModel; }
+            set { _viewModel = value; }
         }
     }
 }

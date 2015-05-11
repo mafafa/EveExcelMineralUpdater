@@ -8,7 +8,7 @@ using Data.APIRequests;
 
 namespace Core
 {
-    public class JsonApiResponseParser: IApiRequestResponseParser
+    public class JsonApiResponseParser: IApiRequestResponseParser<MarketOrder>
     {
         public void Parse()
         {

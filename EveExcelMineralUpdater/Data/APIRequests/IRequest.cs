@@ -11,8 +11,6 @@ namespace Data.APIRequests
     public interface IRequest
     {
         ReturnDataType DataReturnType { get; }
-        
-        //HttpWebRequest HttpRequest { get; }
 
         String RequestURL { get; }
     }
