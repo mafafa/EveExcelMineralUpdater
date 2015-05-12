@@ -32,7 +32,7 @@ namespace EveExcelMineralUpdater.ViewModels
 
         private void ChangeToQuickLook(object param)
         {
-            FlowManager.Instance.ChangePage(FlowManager.Pages.QuickLook);
+            FlowManager.Instance.ChangePage<QuickLookRequestViewModel>();
         }
 
         public IViewModel CurrentViewModel

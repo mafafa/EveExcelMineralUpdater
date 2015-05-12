@@ -13,32 +13,34 @@ namespace EveExcelMineralUpdater
         private static FlowManager _instance;
 
         private MainWindow _mainWindow;
+        private ICollection<IViewModel> _viewModels; 
 
         private FlowManager()
         {
-
+            ViewModels = new List<IViewModel>();
         }
 
-        public void ChangePage(Pages page)
+        public void ChangePage<TViewModel>() where TViewModel : IViewModel, new()
         {
-            IViewModel newViewModel = null; // TODO: Remove null when every page viewmodel implemented
-            
-            switch (page)
+            // If we are already on the same page as the button click, we don't change anything
+            if (AppWindow.ViewModel.CurrentViewModel == null || 
+                AppWindow.ViewModel.CurrentViewModel.GetType() != typeof(TViewModel))
             {
-                case Pages.MarketStat:
-                    break;
-                case Pages.QuickLook:
-                    newViewModel = new QuickLookRequestViewModel();
-                    break;
-                case Pages.History:
-                    break;
-                case Pages.Route:
-                    break;
-                case Pages.Settings:
-                    break;
+                foreach (IViewModel viewModel in ViewModels)
+                {
+                    // If an instance of the viewmodel already exists, we switch to that one
+                    if (viewModel.GetType() == typeof(TViewModel))
+                    {
+                        AppWindow.ViewModel.CurrentViewModel = viewModel;
+                        return;
+                    }
+                }
+            
+                // Else, we create a new instance of the viewmodel
+                TViewModel newViewModel = new TViewModel();
+                AppWindow.ViewModel.CurrentViewModel = newViewModel;
+                ViewModels.Add(newViewModel);
             }
-
-            AppWindow.ViewModel.CurrentViewModel = newViewModel;
         }
 
         public static FlowManager Instance
@@ -54,19 +56,8 @@ namespace EveExcelMineralUpdater
             }
         }
 
-        public MainWindow AppWindow
-        {
-            get { return _mainWindow; }
-            set { _mainWindow = value; }
-        }
+        public MainWindow AppWindow { get; set; }
 
-        public enum Pages
-        {
-            MarketStat,
-            QuickLook,
-            History,
-            Route,
-            Settings
-        }
+        public ICollection<IViewModel> ViewModels { get; private set; }
     }
 }
