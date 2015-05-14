@@ -15,6 +15,10 @@ namespace EveExcelMineralUpdater.Views
             InitializeComponent();
         }
 
-        public MainViewModel ViewModel { get; set; }
+        public MainViewModel ViewModel
+        {
+            get { return _mainViewModel; }
+            set { _mainViewModel = value; }
+        }
     }
 }

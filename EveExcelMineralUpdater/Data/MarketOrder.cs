@@ -13,17 +13,20 @@ namespace Data
         private uint _orderID;
         private float _price;
         private uint _volumeRemaining;
+        private EveItem _item;
 
-        public MarketOrder(uint orderID, float price, uint volumeRemaining)
+        public MarketOrder(uint orderID, float price, uint volumeRemaining, EveItem item)
         {
             _orderID = orderID;
             _price = price;
             _volumeRemaining = volumeRemaining;
+            _item = item;
         }
 
         public override string ToString()
         {
-            return "OrderID = " + OrderID + ", Price = " + Price + ", Volume Remaining = " + VolumeRemaining;
+            return "OrderID = " + OrderID + ", Price = " + Price +
+                ", Volume Remaining = " + VolumeRemaining + ", Item is: " + Item;
         }
 
         public uint OrderID
@@ -39,6 +42,11 @@ namespace Data
         public uint VolumeRemaining
         {
             get { return _volumeRemaining; }
+        }
+
+        public EveItem Item
+        {
+            get { return _item; }
         }
     }
 }

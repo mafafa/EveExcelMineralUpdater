@@ -61,6 +61,10 @@
     <Compile Include="Views\QuickLookRequestView.xaml.cs">
       <DependentUpon>QuickLookRequestView.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\DataTemplates\MarketOrderDataTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -105,7 +109,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\thumb_icon-mineral-protoss.png" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj">
       <Project>{4eadb013-cc46-45ad-ad4a-2dfdce8ef5cf}</Project>

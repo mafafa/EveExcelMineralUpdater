@@ -52,7 +52,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="XlsxSerializer.cs" />
     <Compile Include="QuickLookResponseParser.cs" />
-    <Compile Include="JsonApiResponseParser.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Data\Data.csproj">

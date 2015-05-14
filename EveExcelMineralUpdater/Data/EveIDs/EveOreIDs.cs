@@ -64,7 +64,19 @@ namespace Data.EveIDs
         public const uint PRISTINE_JASPET_ORE_ID = 17449;
         public const uint PURE_JASPET_ORE_ID = 17448;
 
+        public const uint COMPRESSED_FIERY_KERNITE_ORE_ID = 28409;
+        public const uint COMPRESSED_KERNITE_ORE_ID = 28410;
+        public const uint COMPRESSED_LUMINOUS_KERNITE_ORE_ID = 28411;
+        public const uint FIERY_KERNITE_ORE_ID = 17453;
+        public const uint KERNITE_ORE_ID = 20;
+        public const uint LUMINOUS_KERNITE_ORE_ID = 17452;
 
+        public const uint COMPRESSED_MAGMA_MERCOXIT_ORE_ID = 28412;
+        public const uint COMPRESSED_MERCOXIT_ORE_ID = 28413;
+        public const uint COMPRESSED_VITREOUS_MERCOXIT_ORE_ID = 28414;
+        public const uint MAGMA_MERCOXIT_ORE_ID = 17869;
+        public const uint MERCOXIT_ORE_ID = 11396;
+        public const uint VITREOUS_MERCOXIT_ORE_ID = 17870;
         
         public const uint COMPRESSED_GOLDEN_OMBER_ORE_ID = 28415;
         public const uint COMPRESSED_OMBER_ORE_ID = 28416;
@@ -79,6 +91,13 @@ namespace Data.EveIDs
         public const uint COMPRESSED_RICH_PLAGIOCLASE_ORE_ID = 28423;
         public const uint PLAGIOCLASE_ORE_ID = 18;
         public const uint RICH_PLAGIOCLASE_ORE_ID = 17456;
+
+        public const uint COMPRESSED_PYROXERES_ORE_ID = 28424;
+        public const uint COMPRESSED_SOLID_PYROXERES_ORE_ID = 28425;
+        public const uint COMPRESSED_VISCOUS_PYROXERES_ORE_ID = 28426;
+        public const uint PYROXERES_ORE_ID = 1224;
+        public const uint SOLID_PYROXERES_ORE_ID = 17459;
+        public const uint VISCOUS_PYROXERES_ORE_ID = 17460;
         
         public const uint COMPRESSED_CONDENSED_SCORDITE_ORE_ID = 28427;
         public const uint COMPRESSED_MASSIVE_SCORDITE_ORE_ID = 28428;
@@ -86,6 +105,13 @@ namespace Data.EveIDs
         public const uint CONDENSED_SCORDITE_ORE_ID = 17463;
         public const uint MASSIVE_SCORDITE_ORE_ID = 17464;
         public const uint SCORDITE_ORE_ID = 1228;
+
+        public const uint BRIGHT_SPODUMAIN_ORE_ID = 17466;
+        public const uint COMPRESSED_BRIGHT_SPODUMAIN_ORE_ID = 28418;
+        public const uint COMPRESSED_GLEAMING_SPODUMAIN_ORE_ID = 28419;
+        public const uint COMPRESSED_SPODUMAIN_ORE_ID = 28420;
+        public const uint GLEAMING_SPODUMAIN_ORE_ID = 17467;
+        public const uint SPODUMAIN_ORE_ID = 19;
 
         public const uint COMPRESSED_CONCENTRATED_VELDSPAR_ORE_ID = 28430;
         public const uint COMPRESSED_DENSE_VELDSPAR_ORE_ID = 28431;

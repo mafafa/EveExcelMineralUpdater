@@ -14,12 +14,14 @@ namespace Core
     {
         private String _rawRequestResponse;
         private List<MarketOrder> _parsedMarketOrders;
+        private EveItem _item;
         
-        public QuickLookResponseParser(String rawResponse)
+        public QuickLookResponseParser(String rawResponse, EveItem item)
         {
             _parsedMarketOrders = new List<MarketOrder>();
             
             _rawRequestResponse = rawResponse;
+            _item = item;
         }
 
         public void Parse()
@@ -71,7 +73,7 @@ namespace Core
                             float.TryParse(priceNode.InnerText, out price) &&
                             UInt64.TryParse(volumeRemainingNode.InnerText, out volumeRemaining))
                         {
-                            _parsedMarketOrders.Add(new MarketOrder((uint)orderID, price, (uint)volumeRemaining));
+                            _parsedMarketOrders.Add(new MarketOrder((uint)orderID, price, (uint)volumeRemaining, Item));
                         }
                     }
                     catch (XPathException ex)
@@ -101,6 +103,11 @@ namespace Core
         public List<MarketOrder> ParsedMarketOrders
         {
             get { return _parsedMarketOrders; }
+        }
+
+        public EveItem Item
+        {
+            get { return _item; }
         }
     }
 }

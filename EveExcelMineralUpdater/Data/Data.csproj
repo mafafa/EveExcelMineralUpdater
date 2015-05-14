@@ -47,10 +47,12 @@
     <Compile Include="APIRequests\QuickLookOnPathRequest.cs" />
     <Compile Include="APIRequests\QuickLookRequest.cs" />
     <Compile Include="APIRequests\RouteRequest.cs" />
+    <Compile Include="EveIDs\EveIceIDs.cs" />
     <Compile Include="EveIDs\EveLocationIDs.cs" />
     <Compile Include="EveIDs\EveMineralIDs.cs" />
     <Compile Include="EveIDs\EveOreIDs.cs" />
     <Compile Include="EveIDs\EvePIIDs.cs" />
+    <Compile Include="EveItem.cs" />
     <Compile Include="MarketOrder.cs" />
     <Compile Include="NotifyProperty\BindableObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
