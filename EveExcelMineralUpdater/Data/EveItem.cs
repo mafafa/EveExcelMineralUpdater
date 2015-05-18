@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.Imaging;
 using Data.NotifyProperty;
 
 namespace Data
@@ -12,6 +13,7 @@ namespace Data
         private ItemTypes _itemType;
         private uint _itemID;
         private String _itemName;
+        private BitmapImage _icon;
         
         public EveItem()
         {
@@ -52,6 +54,19 @@ namespace Data
                 if (_itemName != value)
                 {
                     _itemName = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        public BitmapImage Icon
+        {
+            get { return _icon; }
+            set
+            {
+                if (_icon != value)
+                {
+                    _icon = value;
                     RaisePropertyChanged();
                 }
             }

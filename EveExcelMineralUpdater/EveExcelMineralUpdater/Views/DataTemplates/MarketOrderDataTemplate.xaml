@@ -14,8 +14,8 @@
                 <ColumnDefinition Width="70*"/>
             </Grid.ColumnDefinitions>
             
-            <!-- Item icon TODO: Add Icon-->
-            <Image Grid.Column="0" Margin="10,0,10,0"  Stretch="Fill" Source="../../Images/thumb_icon-mineral-protoss.png" />
+            <!-- Item icon -->
+            <Image Grid.Column="0" Margin="10,0,10,0" Stretch="Fill" Source="{Binding Item.Icon}" />
 
             <Separator Grid.Column="1" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
 

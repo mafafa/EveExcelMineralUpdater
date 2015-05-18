@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Dynamic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.Imaging;
 using Core;
 using Data;
 using Data.APIRequests;
@@ -15,15 +17,17 @@ namespace EveExcelMineralUpdater.ViewModels
 {
     public class QuickLookRequestViewModel : IViewModel
     {
-        private ObservableCollection<MarketOrder> _quickLookItems; 
+        private ObservableCollection<MarketOrder> _quickLookItems;
+        private ICollection<String> _comboBoxItemTypes;
+        private ICollection<String> _comboBoxItems;
         
         public event PropertyChangedEventHandler PropertyChanged;
 
         public QuickLookRequestViewModel()
         {
-            _quickLookItems = new ObservableCollection<MarketOrder>();
-            
-            
+            QuickLookItems = new ObservableCollection<MarketOrder>();
+            InitItemTypeComboBox();
+            InitItemComboBox();
             
             
             // We initiate the request from prices
@@ -39,6 +43,8 @@ namespace EveExcelMineralUpdater.ViewModels
                 item.ItemID = quickLookRequest.TypeID;
                 item.ItemName = "Scordite";
                 item.ItemType = EveItem.ItemTypes.Ore;
+                Uri uri = new Uri("/EveExcelMineralUpdater;component/Images/thumb_icon-mineral-protoss.png", UriKind.Relative);
+                item.Icon = new BitmapImage(uri);
                 
                 QuickLookResponseParser rawResponseParser = new QuickLookResponseParser(requestBuilder.Response, item);
 
@@ -58,6 +64,25 @@ namespace EveExcelMineralUpdater.ViewModels
             }
         }
 
+        protected void RaisePropertyChanged([CallerMemberName]string propertName = "")
+        {
+            var temp = PropertyChanged;
+            if (temp != null)
+            {
+                temp(this, new PropertyChangedEventArgs(propertName));
+            }
+        }
+
+        private void InitItemTypeComboBox()
+        {
+            
+        }
+
+        private void InitItemComboBox()
+        {
+            
+        }
+
         public ObservableCollection<MarketOrder> QuickLookItems
         {
             get { return _quickLookItems; }
@@ -70,14 +95,9 @@ namespace EveExcelMineralUpdater.ViewModels
                 }
             }
         }
-        
-        protected void RaisePropertyChanged([CallerMemberName]string propertName = "")
-        {
-            var temp = PropertyChanged;
-            if (temp != null)
-            {
-                temp(this, new PropertyChangedEventArgs(propertName));
-            }
-        }
+
+        public ICollection<String> ComboBoxItemTypes { get; private set; }
+
+        public ICollection<String> ComboBoxItems { get; private set; }
     }
 }
