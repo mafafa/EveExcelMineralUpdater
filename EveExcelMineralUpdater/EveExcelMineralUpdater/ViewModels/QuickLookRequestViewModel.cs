@@ -35,7 +35,6 @@ namespace EveExcelMineralUpdater.ViewModels
             SelectedComboBoxItemType = ComboBoxItemTypes.ElementAt(0);
 
             InitItemComboBox();
-            SelectedComboBoxItem = ComboBoxItems.ElementAt(0);
 
 
             // We initiate the request from prices

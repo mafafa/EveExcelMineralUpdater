@@ -148,7 +148,7 @@
 		</Ore>
 		
 		<Ice>
-			<Ice>
+			<Ice_Category>
 				<Blue_Ice ID="16264"/>
 				<CLear_Icicle ID="16262"/>
 				<Compressed_Blue_Ice ID="28433"/>
@@ -173,7 +173,7 @@
 				<Smooth_Glacial_Mass ID="17977"/>
 				<Thick_Blue_Ice ID="17975"/>
 				<White_Glaze ID="16265"/>
-			</Ice>
+			</Ice_Category>
 		</Ice>
 
 		<Gas>
@@ -210,7 +210,7 @@
 		</Gas>
 		
 		<Mineral>
-			<Mineral>
+			<Mineral_Category>
 				<Isogen ID="37"/>
 				<Megacyte ID="40"/>
 				<Mexallon ID="36"/>
@@ -219,7 +219,7 @@
 				<Pyerite ID="35"/>
 				<Tritanium ID="34"/>
 				<Zydrine ID="39"/>
-			</Mineral>
+			</Mineral_Category>
 		</Mineral>
 		
 		<Pi>

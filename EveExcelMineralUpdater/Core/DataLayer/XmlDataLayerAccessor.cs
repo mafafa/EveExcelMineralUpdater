@@ -40,20 +40,19 @@ namespace Core.DataLayer
         {
             itemName = AddDashInString(itemName);
             
-            IEnumerable<uint?> ids = _xmlFile.Descendants()
+            IEnumerable<uint?> ids = _xmlFile.Descendants("Item_Types").Descendants()
                 .Where(x => x.Name.LocalName == itemName)
                 .Select(t => (uint?)(t.Attributes()
-                    .Where(a => a.Name.LocalName == "ID").FirstOrDefault()));
+                    .FirstOrDefault(a => a.Name.LocalName == "ID")));
 
             return ids.FirstOrDefault();
         }
 
         public String GetItemName(uint id)
         {
-            IEnumerable<String> names = _xmlFile.Descendants()
+            IEnumerable<String> names = _xmlFile.Descendants("Item_Types").Descendants()
                 .Where(x => (uint?)(x.Attributes()
-                    .Where(a => a.Name.LocalName == "ID")
-                    .FirstOrDefault()) == id)
+                    .FirstOrDefault(a => a.Name.LocalName == "ID")) == id)
                 .Select(t => t.Name.LocalName);
 
             return RemoveDashFromString(names.FirstOrDefault()) ?? "";
@@ -76,7 +75,7 @@ namespace Core.DataLayer
             if (itemType != null)
             {
                 items = _xmlFile.Descendants(itemType.ToString()).Descendants()
-                    .Where(x => (x.Attribute("ID")) != null)
+                    .Where(x => x.Attribute("ID") != null)
                     .Select(x => new EveItem(x.Name.LocalName,
                         (uint)x.Attributes().FirstOrDefault(a => a.Name.LocalName == "ID"), 
                         (EveItem.ItemTypes)itemType)).ToList();
@@ -84,10 +83,10 @@ namespace Core.DataLayer
             else
             {
                 items = _xmlFile.Descendants()
-                    .Where(x => x.Attributes().Where(a => a.Name.LocalName == "ID").FirstOrDefault() != null)
+                    .Where(x => x.Attribute("ID") != null)
                     .Select(x => new EveItem(x.Name.LocalName,
                         (uint) x.Attributes().FirstOrDefault(a => a.Name.LocalName == "ID"),
-                        (EveItem.ItemTypes)Enum.Parse(typeof(EveItem.ItemTypes), x.Parent.Parent.ToString(), true))).ToList();
+                        (EveItem.ItemTypes)Enum.Parse(typeof(EveItem.ItemTypes), x.Parent.Parent.Name.LocalName, true))).ToList();
             }
 
             foreach (EveItem item in items)

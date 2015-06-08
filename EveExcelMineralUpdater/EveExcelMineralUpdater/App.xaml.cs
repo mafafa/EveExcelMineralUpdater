@@ -111,6 +111,13 @@ namespace EveExcelMineralUpdater
             
             mainWindow.Show();
 
+            /*IDataLayerAccessor dataLayerAccessor = new XmlDataLayerAccessor();
+            dataLayerAccessor.LoadDataLayer();
+
+            uint? id = dataLayerAccessor.GetItemID("Test Cultures");
+
+            MessageBox.Show(id.ToString(), "My Application");*/
+
             //System.Environment.Exit(0);
         }
     }
