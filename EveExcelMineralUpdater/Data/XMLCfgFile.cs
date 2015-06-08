@@ -21,7 +21,7 @@ namespace Data
         
         public XmlCfgFile()
         {
-            _configFilePath = Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location) + @"\settings.cfg"; ;
+            _configFilePath = Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location) + @"\settings.cfg";
             ExcelFilePath = null;
             ExcelPriceColumn = "A";
             ExcelPriceRowStart = 1;

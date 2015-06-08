@@ -45,6 +45,8 @@
     <Compile Include="ApiHttpRequestBuilder.cs" />
     <Compile Include="ApiRequestFactory.cs" />
     <Compile Include="CfgFileSerializer.cs" />
+    <Compile Include="DataLayer\IDataLayerAccessor.cs" />
+    <Compile Include="DataLayer\XmlDataLayerAccessor.cs" />
     <Compile Include="Exceptions\CfgFileNotWellDefinedException.cs" />
     <Compile Include="Exceptions\MissingRequiredParameterException.cs" />
     <Compile Include="IApiRequestResponseParser.cs" />

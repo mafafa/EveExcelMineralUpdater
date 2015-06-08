@@ -2,176 +2,178 @@
 <Eve_App>
 	<Item_Types>
 		<Ore>
-			<Arkonor>
+			<Arkonor_Category>
 				<Arkonor ID="22"/>
 				<Compressed_Arkonor ID="28367"/>
 				<Compressed_Crimson_Arkonor ID="28385"/>
 				<Compressed_Prime_Arkonor ID="28387"/>
 				<Crimson_Arkonor ID="17425"/>
 				<Prime_Arkonor ID="17426"/>
-			</Arkonor>
+			</Arkonor_Category>
 
-			<Bistot>
+			<Bistot_Category>
 				<Bistot ID="1223"/>
 				<Compressed_Bistot ID="28388"/>
 				<Compressed_Monoclinic_Bistot ID="28389"/>
 				<Compressed_Triclinic_Bistot ID="28390"/>
 				<Monoclinic_Bistot ID="17429"/>
 				<Triclinic_Bistot ID="17428"/>
-			</Bistot>
+			</Bistot_Category>
 
-			<Crokite>
+			<Crokite_Category>
 				<Compressed_Crokite ID="28391"/>
 				<Compressed_Crystalline_Crokite ID="28392"/>
 				<Compressed_Sharp_Crokite ID="28393"/>
 				<Crokite ID="1225"/>
 				<Crystalline_Crokite ID="17433"/>
 				<Sharp_Crokite ID="17432"/>
-			</Crokite>
+			</Crokite_Category>
 
-			<Dark_Ochre>
+			<Dark_Ochre_Category>
 				<Compressed_Dark_Ochre ID="28394"/>
 				<Compressed_Obsidian_Ochre ID="28395"/>
 				<Compressed_Onyx_Ochre ID="28396"/>
 				<Dark_Ochre ID="1232"/>
 				<Obsidian_Ochre ID="17437"/>
 				<Onyx_Ochre ID="17436"/>
-			</Dark_Ochre>
+			</Dark_Ochre_Category>
 
-			<Gneiss>
+			<Gneiss_Category>
 				<Compressed_Gneiss ID="28397"/>
 				<Compressed_Iridescent_Gneiss ID="28398"/>
 				<Compressed_Prismatic_Gneiss ID="28399"/>
 				<Gneiss ID="1229"/>
 				<Iridescent_Gneiss ID="17865"/>
 				<Prismatic_Gneiss ID="17866"/>
-			</Gneiss>
+			</Gneiss_Category>
 
-			<Hedbergite>
+			<Hedbergite_Category>
 				<Compressed_Glazed_Hedbergite ID="28400"/>
 				<Compressed_Hedbergite ID="28401"/>
 				<Compressed_Vitric_Hedbergite ID="28402"/>
 				<Glazed_Hedbergite ID="17441"/>
 				<Hedbergite ID="21"/>
 				<Vitric_Hedbergite ID="17440"/>
-			</Hedbergite>
+			</Hedbergite_Category>
 
-			<Hemorphite>
+			<Hemorphite_Category>
 				<Compressed_Hemorphite ID="28403"/>
 				<Compressed_Radiant_Hemorphite ID="28404"/>
 				<Compressed_Vivid_Hemorphite ID="28405"/>
 				<Hemorphite ID="1231"/>
 				<Radiant_Hemorphite ID="17445"/>
 				<Vivid_Hemorphite ID="17444"/>
-			</Hemorphite>
+			</Hemorphite_Category>
 
-			<Jaspet>
+			<Jaspet_Category>
 				<Compressed_Jaspet ID="28406"/>
 				<Compressed_Pristine_Jaspet ID="28407"/>
 				<Compressed_Pure_Jaspet ID="28408"/>
 				<Jaspet ID="1226"/>
 				<Pristine_Jaspet ID="17449"/>
 				<Pure_Jaspet ID="17448"/>
-			</Jaspet>
+			</Jaspet_Category>
 
-			<Kernite>
+			<Kernite_Category>
 				<Compressed_Fiery_Kernite ID="28409"/>
 				<Compressed_Kernite ID="28410"/>
 				<Compressed_Luminous_Kernite ID="28411"/>
 				<Fiery_Kernite ID="17453"/>
 				<Kernite ID="20"/>
 				<Luminous_Kernite ID="17452"/>
-			</Kernite>
+			</Kernite_Category>
 
-			<Mercoxit>
+			<Mercoxit_Category>
 				<Compressed_Magma_Mercoxit ID="28412"/>
 				<Compressed_Mercoxit ID="28413"/>
 				<Compressed_Vitreous_Mercoxit ID="28414"/>
 				<Magma_Mercoxit ID="17869"/>
 				<Mercoxit ID="11396"/>
 				<Vitreous_Mercoxit ID="17870"/>
-			</Mercoxit>
+			</Mercoxit_Category>
 
-			<Omber>
+			<Omber_Category>
 				<Compressed_Golden_Omber ID="28415"/>
 				<Compressed_Omber ID="28416"/>
 				<Compressed_Silvery_Omber ID="28417"/>
 				<Golden_Omber ID="17868"/>
 				<Omber ID="1227"/>
 				<Silvery_Omber ID="17867"/>
-			</Omber>
+			</Omber_Category>
 
-			<Plagioclase>
+			<Plagioclase_Category>
 				<Azure_Plagioclase ID="17455"/>
 				<Compressed_Azure_Plagioclase ID="28421"/>
 				<Compressed_Plagioclase ID="28422"/>
 				<Compressed_Rich_Plagioclase ID="28423"/>
 				<Plagioclase ID="18"/>
 				<Rich_Plagioclase ID="17456"/>
-			</Plagioclase>
+			</Plagioclase_Category>
 
-			<Pyroxeres>
+			<Pyroxeres_Category>
 				<Compressed_Pyroxeres ID="28424"/>
 				<Compressed_Solid_Pyroxeres ID="28425"/>
 				<Compressed_Viscous_Pyroxeres ID="28426"/>
 				<Pyroxeres ID="1224"/>
 				<Solid_Pyroxeres ID="17459"/>
 				<Viscous_Pyroxeres ID="17460"/>
-			</Pyroxeres>
+			</Pyroxeres_Category>
 
-			<Scordite>
+			<Scordite_Category>
 				<Compressed_Condensed_Scordite ID="28427"/>
 				<Compressed_Massive_Scordite ID="28428"/>
 				<Compressed_Scordite ID="28429"/>
 				<Condensed_Scordite ID="17463"/>
 				<Massive_Scordite ID="17464"/>
 				<Scordite ID="1228"/>
-			</Scordite>
+			</Scordite_Category>
 
-			<Spodumain>
+			<Spodumain_Category>
 				<Bright_Spodumain ID="17466"/>
 				<Compressed_Bright_Spodumain ID="28418"/>
 				<Compressed_Gleaming_Spodumain ID="28419"/>
 				<Compressed_Spodumain ID="28420"/>
 				<Gleaming_Spodumain ID="17467"/>
 				<Spodumain ID="19"/>
-			</Spodumain>
+			</Spodumain_Category>
 
-			<Veldspar>
+			<Veldspar_Category>
 				<Compressed_Concentrated_Veldspar ID="28430"/>
 				<Compressed_Dense_Veldspar ID="28431"/>
 				<Compressed_Veldspar ID="28432"/>
 				<Concentrated_Veldspar ID="17470"/>
 				<Dense_Veldspar ID="17471"/>
 				<Veldspar ID="1230"/>
-			</Veldspar>
+			</Veldspar_Category>
 		</Ore>
 		
 		<Ice>
-			<Blue_Ice ID="16264"/>
-			<CLear_Icicle ID="16262"/>
-			<Compressed_Blue_Ice ID="28433"/>
-			<Compressed_Clear_Icicle ID="28434"/>
-			<Compressed_Dark_Glitter ID="28435"/>
-			<Compressed_Enriched_Clear_Icicle ID="28436"/>
-			<Compressed_Gelidus ID="28437"/>
-			<Compressed_Glacial_Mass ID="28438"/>
-			<Compressed_Glare_Crust ID="28439"/>
-			<Compressed_Krystallos ID="28440"/>
-			<Compressed_Pristine_White_Glaze ID="28441"/>
-			<Compressed_Smooth_Glacial_Mass ID="28442"/>
-			<Compressed_Thick_Blue_Ice ID="28443"/>
-			<Compressed_White_Glaze ID="28444"/>
-			<Dark_Glitter ID="16267"/>
-			<Enriched_Clear_Icicle ID="17978"/>
-			<Gelidus ID="16268"/>
-			<Glacial_Mass ID="16263"/>
-			<Glare_Crust ID="16266"/>
-			<Krystallos ID="16269"/>
-			<Pristine_White_Glaze ID="17976"/>
-			<Smooth_Glacial_Mass ID="17977"/>
-			<Thick_Blue_Ice ID="17975"/>
-			<White_Glaze ID="16265"/>
+			<Ice>
+				<Blue_Ice ID="16264"/>
+				<CLear_Icicle ID="16262"/>
+				<Compressed_Blue_Ice ID="28433"/>
+				<Compressed_Clear_Icicle ID="28434"/>
+				<Compressed_Dark_Glitter ID="28435"/>
+				<Compressed_Enriched_Clear_Icicle ID="28436"/>
+				<Compressed_Gelidus ID="28437"/>
+				<Compressed_Glacial_Mass ID="28438"/>
+				<Compressed_Glare_Crust ID="28439"/>
+				<Compressed_Krystallos ID="28440"/>
+				<Compressed_Pristine_White_Glaze ID="28441"/>
+				<Compressed_Smooth_Glacial_Mass ID="28442"/>
+				<Compressed_Thick_Blue_Ice ID="28443"/>
+				<Compressed_White_Glaze ID="28444"/>
+				<Dark_Glitter ID="16267"/>
+				<Enriched_Clear_Icicle ID="17978"/>
+				<Gelidus ID="16268"/>
+				<Glacial_Mass ID="16263"/>
+				<Glare_Crust ID="16266"/>
+				<Krystallos ID="16269"/>
+				<Pristine_White_Glaze ID="17976"/>
+				<Smooth_Glacial_Mass ID="17977"/>
+				<Thick_Blue_Ice ID="17975"/>
+				<White_Glaze ID="16265"/>
+			</Ice>
 		</Ice>
 
 		<Gas>
@@ -208,14 +210,16 @@
 		</Gas>
 		
 		<Mineral>
-			<Isogen ID="37"/>
-			<Megacyte ID="40"/>
-			<Mexallon ID="36"/>
-			<Morphite ID=""/>
-			<Nocxium ID="38"/>
-			<Pyerite ID="35"/>
-			<Tritanium ID="34"/>
-			<Zydrine ID="39"/>
+			<Mineral>
+				<Isogen ID="37"/>
+				<Megacyte ID="40"/>
+				<Mexallon ID="36"/>
+				<Morphite ID="11399"/>
+				<Nocxium ID="38"/>
+				<Pyerite ID="35"/>
+				<Tritanium ID="34"/>
+				<Zydrine ID="39"/>
+			</Mineral>
 		</Mineral>
 		
 		<Pi>
@@ -225,8 +229,8 @@
 				<Nano_Factory ID="2869"/>
 				<Organic_Mortar_Applicators ID="2870"/>
 				<Recursive_Computing_Module ID="2871"/>
-				<Self_Harmonizing_Power_Core ID=""/>
-				<Sterile_Conduits ID="2872"/>
+				<Self_Harmonizing_Power_Core ID="2872"/>
+				<Sterile_Conduits ID="2875"/>
 				<Wetware_Mainframe ID="2876"/>
 			</Advanced_Planetary_Materials>
 
@@ -303,7 +307,7 @@
 				<Guidance_Systems ID="9834"/>
 				<Hazmat_Detection_Systems ID="2366"/>
 				<Hermetic_Membranes ID="2361"/>
-				<High_Tech_Transmitters ID=""/>
+				<High_Tech_Transmitters ID="17898"/>
 				<Industrial_Explosives ID="2360"/>
 				<Neocoms ID="2354"/>
 				<Nuclear_Reactors ID="2352"/>

@@ -4,11 +4,13 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Dynamic;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
 using Core;
+using Core.DataLayer;
 using Data;
 using Data.APIRequests;
 using Data.EveIDs;
@@ -18,20 +20,26 @@ namespace EveExcelMineralUpdater.ViewModels
     public class QuickLookRequestViewModel : IViewModel
     {
         private ObservableCollection<MarketOrder> _quickLookItems;
-        private ICollection<String> _comboBoxItemTypes;
-        private ICollection<String> _comboBoxItems;
+        
+        private EveItem.ItemTypes _selectedComboBoxItemType;
+        
+        private ICollection<EveItem> _comboBoxItems;
+        private EveItem _selectedComboBoxItem;
         
         public event PropertyChangedEventHandler PropertyChanged;
 
         public QuickLookRequestViewModel()
         {
             QuickLookItems = new ObservableCollection<MarketOrder>();
-            InitItemTypeComboBox();
+            
+            SelectedComboBoxItemType = ComboBoxItemTypes.ElementAt(0);
+
             InitItemComboBox();
-            
-            
+            SelectedComboBoxItem = ComboBoxItems.ElementAt(0);
+
+
             // We initiate the request from prices
-            QuickLookRequest quickLookRequest = (QuickLookRequest)ApiRequestFactory.CreateApiRequest(ApiRequestFactory.ApiRequestType.QuickLook);
+            /*QuickLookRequest quickLookRequest = (QuickLookRequest)ApiRequestFactory.CreateApiRequest(ApiRequestFactory.ApiRequestType.QuickLook);
             quickLookRequest.UseSystem = EveLocationIDs.RENS_SYSTEM_ID;
             quickLookRequest.TypeID = EveOreIDs.SCORDITE_ORE_ID;
 
@@ -61,7 +69,7 @@ namespace EveExcelMineralUpdater.ViewModels
             else
             {
                 Console.Out.WriteLine("Error in getting request's response from the API web server.");
-            }
+            }*/
         }
 
         protected void RaisePropertyChanged([CallerMemberName]string propertName = "")
@@ -73,14 +81,13 @@ namespace EveExcelMineralUpdater.ViewModels
             }
         }
 
-        private void InitItemTypeComboBox()
-        {
-            
-        }
-
         private void InitItemComboBox()
         {
+            IDataLayerAccessor dataLayerAccessor = new XmlDataLayerAccessor();
+            dataLayerAccessor.LoadDataLayer();
             
+            ComboBoxItems = dataLayerAccessor.GetItems(SelectedComboBoxItemType);
+            SelectedComboBoxItem = ComboBoxItems.ElementAt(0);
         }
 
         public ObservableCollection<MarketOrder> QuickLookItems
@@ -96,8 +103,52 @@ namespace EveExcelMineralUpdater.ViewModels
             }
         }
 
-        public ICollection<String> ComboBoxItemTypes { get; private set; }
+        public IEnumerable<EveItem.ItemTypes> ComboBoxItemTypes 
+        {
+            get
+            {
+                return Enum.GetValues(typeof(EveItem.ItemTypes)).Cast<EveItem.ItemTypes>();
+            }
+        }
 
-        public ICollection<String> ComboBoxItems { get; private set; }
+        public EveItem.ItemTypes SelectedComboBoxItemType
+        {
+            get { return _selectedComboBoxItemType; }
+            set
+            {
+                if (_selectedComboBoxItemType != value)
+                {
+                    _selectedComboBoxItemType = value;
+                    InitItemComboBox();
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        public ICollection<EveItem> ComboBoxItems
+        {
+            get { return _comboBoxItems; }
+            private set
+            {
+                if (_comboBoxItems != value)
+                {
+                    _comboBoxItems = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        public EveItem SelectedComboBoxItem
+        {
+            get { return _selectedComboBoxItem; }
+            set
+            {
+                if (_selectedComboBoxItem != value)
+                {
+                    _selectedComboBoxItem = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
     }
 }

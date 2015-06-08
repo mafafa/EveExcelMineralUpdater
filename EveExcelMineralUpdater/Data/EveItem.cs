@@ -20,6 +20,15 @@ namespace Data
             
         }
 
+        public EveItem(String itemName, uint itemID, ItemTypes itemType)
+        {
+            ItemName = itemName;
+            ItemID = itemID;
+            ItemType = itemType;
+
+            //TODO: Set icon depending on itemType
+        }
+
         public ItemTypes ItemType
         {
             get { return _itemType; }
@@ -76,6 +85,7 @@ namespace Data
         {
             Ore,
             Ice,
+            Gas,
             Mineral,
             Pi
         }

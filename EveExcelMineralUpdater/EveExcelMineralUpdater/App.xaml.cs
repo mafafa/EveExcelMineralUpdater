@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Xml;
 using Core;
+using Core.DataLayer;
 using Core.Exceptions;
 using Data;
 using Data.APIRequests;
