@@ -11,6 +11,7 @@ namespace Data
     public class EveItem : BindableObject
     {
         private ItemTypes _itemType;
+        private String _itemNodeCategory;
         private uint _itemID;
         private String _itemName;
         private BitmapImage _icon;
@@ -29,6 +30,12 @@ namespace Data
             //TODO: Set icon depending on itemType
         }
 
+        public EveItem(String itemName, uint itemID, ItemTypes itemType, String itemNodeCategory)
+            : this(itemName, itemID, itemType)
+        {
+            ItemNodeCategory = itemNodeCategory;
+        }
+
         public ItemTypes ItemType
         {
             get { return _itemType; }
@@ -37,6 +44,19 @@ namespace Data
                 if (_itemType != value)
                 {
                     _itemType = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        public String ItemNodeCategory
+        {
+            get { return _itemNodeCategory; }
+            set
+            {
+                if (_itemNodeCategory != value)
+                {
+                    _itemNodeCategory = value;
                     RaisePropertyChanged();
                 }
             }

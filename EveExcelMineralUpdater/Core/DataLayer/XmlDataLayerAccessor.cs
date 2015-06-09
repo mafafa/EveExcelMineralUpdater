@@ -77,8 +77,9 @@ namespace Core.DataLayer
                 items = _xmlFile.Descendants(itemType.ToString()).Descendants()
                     .Where(x => x.Attribute("ID") != null)
                     .Select(x => new EveItem(x.Name.LocalName,
-                        (uint)x.Attributes().FirstOrDefault(a => a.Name.LocalName == "ID"), 
-                        (EveItem.ItemTypes)itemType)).ToList();
+                        (uint)x.Attributes().FirstOrDefault(a => a.Name.LocalName == "ID"),
+                        (EveItem.ItemTypes)itemType,
+                        RemoveDashFromString(x.Parent.Name.LocalName))).ToList();
             }
             else
             {
@@ -86,7 +87,8 @@ namespace Core.DataLayer
                     .Where(x => x.Attribute("ID") != null)
                     .Select(x => new EveItem(x.Name.LocalName,
                         (uint) x.Attributes().FirstOrDefault(a => a.Name.LocalName == "ID"),
-                        (EveItem.ItemTypes)Enum.Parse(typeof(EveItem.ItemTypes), x.Parent.Parent.Name.LocalName, true))).ToList();
+                        (EveItem.ItemTypes)Enum.Parse(typeof(EveItem.ItemTypes), x.Parent.Parent.Name.LocalName, true),
+                        RemoveDashFromString(x.Parent.Name.LocalName))).ToList();
             }
 
             foreach (EveItem item in items)

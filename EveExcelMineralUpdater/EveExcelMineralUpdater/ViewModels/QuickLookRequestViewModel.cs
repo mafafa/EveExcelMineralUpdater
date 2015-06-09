@@ -8,6 +8,7 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Data;
 using System.Windows.Media.Imaging;
 using Core;
 using Core.DataLayer;
@@ -22,8 +23,8 @@ namespace EveExcelMineralUpdater.ViewModels
         private ObservableCollection<MarketOrder> _quickLookItems;
         
         private EveItem.ItemTypes _selectedComboBoxItemType;
-        
-        private ICollection<EveItem> _comboBoxItems;
+
+        private ListCollectionView _comboBoxItems;
         private EveItem _selectedComboBoxItem;
         
         public event PropertyChangedEventHandler PropertyChanged;
@@ -85,8 +86,10 @@ namespace EveExcelMineralUpdater.ViewModels
             IDataLayerAccessor dataLayerAccessor = new XmlDataLayerAccessor();
             dataLayerAccessor.LoadDataLayer();
             
-            ComboBoxItems = dataLayerAccessor.GetItems(SelectedComboBoxItemType);
-            SelectedComboBoxItem = ComboBoxItems.ElementAt(0);
+            ComboBoxItems = new ListCollectionView(dataLayerAccessor.GetItems(SelectedComboBoxItemType).ToList());
+            ComboBoxItems.GroupDescriptions.Add(new PropertyGroupDescription("ItemNodeCategory"));
+
+            SelectedComboBoxItem = ComboBoxItems.OfType<EveItem>().ElementAt(0);
         }
 
         public ObservableCollection<MarketOrder> QuickLookItems
@@ -124,7 +127,7 @@ namespace EveExcelMineralUpdater.ViewModels
             }
         }
 
-        public ICollection<EveItem> ComboBoxItems
+        public ListCollectionView ComboBoxItems
         {
             get { return _comboBoxItems; }
             private set
