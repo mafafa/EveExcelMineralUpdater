@@ -20,6 +20,18 @@ namespace EveExcelMineralUpdater.ViewModels
 {
     public class QuickLookRequestViewModel : IViewModel
     {
+        private IRequest _apiRequest;
+
+        // Quicklook parameters
+        private uint _setHours = 24;
+        private uint _setMinQ;
+        private uint _regionLimit;
+        private uint _useSystem;
+
+        // QuickLookOnPath parameters
+        private uint _startPathSystemID;
+        private uint _endPathSystemID;
+        
         private ObservableCollection<MarketOrder> _quickLookItems;
         
         private EveItem.ItemTypes _selectedComboBoxItemType;
@@ -90,6 +102,97 @@ namespace EveExcelMineralUpdater.ViewModels
             ComboBoxItems.GroupDescriptions.Add(new PropertyGroupDescription("ItemNodeCategory"));
 
             SelectedComboBoxItem = ComboBoxItems.OfType<EveItem>().ElementAt(0);
+        }
+
+        public IRequest ApiRequest
+        {
+            get { return _apiRequest; }
+            set
+            {
+                if (_apiRequest != value)
+                {
+                    _apiRequest = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        public uint SetHours
+        {
+            get { return _setHours; }
+            set
+            {
+                if (_setHours != value)
+                {
+                    _setHours = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        public uint SetMinQ
+        {
+            get { return _setMinQ; }
+            set
+            {
+                if (_setMinQ != value)
+                {
+                    _setMinQ = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        public uint RegionLimit
+        {
+            get { return _regionLimit; }
+            set
+            {
+                if (_regionLimit != value)
+                {
+                    _regionLimit = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        public uint UseSystem
+        {
+            get { return _useSystem; }
+            set
+            {
+                if (_useSystem != value)
+                {
+                    _useSystem = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        public uint StartPathSystemID
+        {
+            get { return _startPathSystemID; }
+            set
+            {
+                if (_startPathSystemID != value)
+                {
+                    _startPathSystemID = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        public uint EndPathSystemID
+        {
+            get { return _endPathSystemID; }
+            set
+            {
+                if (_endPathSystemID != value)
+                {
+                    _endPathSystemID = value;
+                    RaisePropertyChanged();
+                }
+            }
         }
 
         public ObservableCollection<MarketOrder> QuickLookItems

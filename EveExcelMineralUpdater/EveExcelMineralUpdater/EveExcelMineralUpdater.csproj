@@ -56,6 +56,8 @@
     <Compile Include="FlowManager.cs" />
     <Compile Include="IView.cs" />
     <Compile Include="IViewModel.cs" />
+    <Compile Include="ValidationRules\IntMinMaxRule.cs" />
+    <Compile Include="ValidationRules\UIntMinMaxRule.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\QuickLookRequestViewModel.cs" />
     <Compile Include="Views\QuickLookRequestView.xaml.cs">
@@ -78,6 +80,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\QuickLookRequestView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Styles\TextBlock.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Styles\TextBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

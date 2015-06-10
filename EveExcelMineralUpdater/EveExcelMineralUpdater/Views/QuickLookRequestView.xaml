@@ -3,12 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:validationRules="clr-namespace:EveExcelMineralUpdater.ValidationRules"
              mc:Ignorable="d" 
              d:DesignHeight="720" d:DesignWidth="1088">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="./DataTemplates/MarketOrderDataTemplate.xaml"/>
+                <ResourceDictionary Source="./Styles/TextBlock.xaml"/>
+                <ResourceDictionary Source="./Styles/TextBox.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
@@ -32,7 +35,7 @@
         </Grid.ColumnDefinitions>
         
         <!-- QuickLook request parameters -->
-        <TextBlock Grid.Row="0" Grid.Column="0" Margin="5">QuickLook Base Parameters:</TextBlock>
+        <TextBlock Grid.Row="0" Grid.Column="0" Margin="5" Style="{StaticResource SectionTitleText}">QuickLook Base Parameters:</TextBlock>
         
         <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
             <StackPanel Orientation="Horizontal">
@@ -47,7 +50,7 @@
                         <GroupStyle>
                             <GroupStyle.HeaderTemplate>
                                 <DataTemplate>
-                                    <TextBlock Margin="5,2,5,2" FontWeight="Bold" FontStretch="ExtraExpanded" Text="{Binding Name}"/>
+                                    <TextBlock Style="{StaticResource ComboBoxPropertyGroupDescription}" Text="{Binding Name}"/>
                                 </DataTemplate>
                             </GroupStyle.HeaderTemplate>
                         </GroupStyle>
@@ -56,7 +59,15 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Margin="15,5,5,5">Set hours:</TextBlock>
-                <TextBox Margin="10,5,5,5" HorizontalAlignment="Left" Width="50"/>
+                <TextBox Margin="10,5,5,5" HorizontalAlignment="Left" Width="50" Style="{StaticResource ErrorValidationTextBox}">
+                    <TextBox.Text>
+                        <Binding Path="SetHours">
+                            <Binding.ValidationRules>
+                                <validationRules:UIntMinMaxRule/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Margin="15,5,5,5">Set min Q:</TextBlock>
@@ -75,7 +86,7 @@
         <Separator Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"/>
         
         <!-- QuickLook OnPath request parameters -->
-        <TextBlock Grid.Row="3" Grid.Column="0" Margin="5">QuickLook On Path Parameters:</TextBlock>
+        <TextBlock Grid.Row="3" Grid.Column="0" Margin="5" Style="{StaticResource SectionTitleText}">QuickLook On Path Parameters:</TextBlock>
 
         <StackPanel Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
             <StackPanel Orientation="Horizontal">
@@ -91,7 +102,7 @@
         <Separator Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3"/>
 
         <!-- Request results section -->
-        <TextBlock Grid.Row="6" Grid.Column="0" Margin="5">Results:</TextBlock>
+        <TextBlock Grid.Row="6" Grid.Column="0" Margin="5" Style="{StaticResource SectionTitleText}">Results:</TextBlock>
         <ListView Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3" Margin="5" HorizontalContentAlignment="Stretch" 
                   ItemTemplate="{StaticResource MarketOrderDataTemplate}" ItemsSource="{Binding QuickLookItems}"  
                   SelectionMode="Extended"/>

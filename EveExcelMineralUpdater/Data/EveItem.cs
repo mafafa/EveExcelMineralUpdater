@@ -11,7 +11,7 @@ namespace Data
     public class EveItem : BindableObject
     {
         private ItemTypes _itemType;
-        private String _itemNodeCategory;
+        private String _itemNodeCategory;   // Optional
         private uint _itemID;
         private String _itemName;
         private BitmapImage _icon;
