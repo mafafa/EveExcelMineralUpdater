@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:validationRules="clr-namespace:EveExcelMineralUpdater.ValidationRules"
+             xmlns:behaviors="clr-namespace:EveExcelMineralUpdater.Behaviors"
              mc:Ignorable="d" 
              d:DesignHeight="720" d:DesignWidth="1088">
     <UserControl.Resources>
@@ -59,7 +60,8 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Margin="15,5,5,5">Set hours:</TextBlock>
-                <TextBox Margin="10,5,5,5" HorizontalAlignment="Left" Width="50" Style="{StaticResource ErrorValidationTextBox}">
+                <TextBox Margin="10,5,5,5" HorizontalAlignment="Left" Width="50" Style="{StaticResource ErrorValidationTextBox}" 
+                         MaxLength="7" behaviors:WatermarkBehavior.WatermarkText="Hours since market order creation" MinWidth="190">
                     <TextBox.Text>
                         <Binding Path="SetHours">
                             <Binding.ValidationRules>
@@ -71,7 +73,16 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Margin="15,5,5,5">Set min Q:</TextBlock>
-                <TextBox Margin="10,5,5,5" HorizontalAlignment="Left" Width="50"/>
+                <TextBox Margin="10,5,5,5" HorizontalAlignment="Left" Width="50" Style="{StaticResource ErrorValidationTextBox}"
+                         MaxLength="7" behaviors:WatermarkBehavior.WatermarkText="Min quantity in market order" MinWidth="165">
+                    <TextBox.Text>
+                        <Binding Path="SetMinQ">
+                            <Binding.ValidationRules>
+                                <validationRules:UIntMinMaxRule/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Margin="15,5,5,5">Region limit:</TextBlock>

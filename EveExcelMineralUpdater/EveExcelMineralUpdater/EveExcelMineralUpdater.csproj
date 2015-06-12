@@ -53,6 +53,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Behaviors\WatermarkBehavior.cs" />
     <Compile Include="FlowManager.cs" />
     <Compile Include="IView.cs" />
     <Compile Include="IViewModel.cs" />
@@ -60,6 +61,7 @@
     <Compile Include="ValidationRules\UIntMinMaxRule.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\QuickLookRequestViewModel.cs" />
+    <Compile Include="Views\Adorners\WatermarkAdorner.cs" />
     <Compile Include="Views\QuickLookRequestView.xaml.cs">
       <DependentUpon>QuickLookRequestView.xaml</DependentUpon>
     </Compile>

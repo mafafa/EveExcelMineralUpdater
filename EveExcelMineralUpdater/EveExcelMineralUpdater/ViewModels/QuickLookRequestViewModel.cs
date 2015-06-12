@@ -24,7 +24,7 @@ namespace EveExcelMineralUpdater.ViewModels
 
         // Quicklook parameters
         private uint _setHours = 24;
-        private uint _setMinQ;
+        private uint _setMinQ = 1;
         private uint _regionLimit;
         private uint _useSystem;
 
