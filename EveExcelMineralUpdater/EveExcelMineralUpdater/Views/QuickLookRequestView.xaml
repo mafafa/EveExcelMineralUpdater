@@ -41,11 +41,12 @@
         <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Margin="15,5,5,5">Item type:</TextBlock>
-                <ComboBox Margin="10,5,5,5" ItemsSource="{Binding ComboBoxItemTypes}" SelectedItem="{Binding SelectedComboBoxItemType}"/>
+                <ComboBox Name="ItemTypeComboBox" Margin="10,5,5,5" ItemsSource="{Binding ComboBoxItemTypes}" 
+                          SelectedItem="{Binding SelectedComboBoxItemType}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Margin="15,5,5,5">Item:</TextBlock>
-                <ComboBox Margin="10,5,5,5" ItemsSource="{Binding ComboBoxItems}" DisplayMemberPath="ItemName" 
+                <ComboBox Name="ItemComboBox"  Margin="10,5,5,5" ItemsSource="{Binding ComboBoxItems}" DisplayMemberPath="ItemName" 
                           SelectedItem="{Binding SelectedComboBoxItem}">
                     <ComboBox.GroupStyle>
                         <GroupStyle>
@@ -61,7 +62,7 @@
             <StackPanel Orientation="Horizontal">
                 <TextBlock Margin="15,5,5,5">Set hours:</TextBlock>
                 <TextBox Margin="10,5,5,5" HorizontalAlignment="Left" Width="50" Style="{StaticResource ErrorValidationTextBox}" 
-                         MaxLength="7" behaviors:WatermarkBehavior.WatermarkText="Hours since market order creation" MinWidth="190">
+                         MaxLength="7" behaviors:WatermarkBehavior.WatermarkText="0000000" MinWidth="55">
                     <TextBox.Text>
                         <Binding Path="SetHours">
                             <Binding.ValidationRules>
@@ -74,7 +75,7 @@
             <StackPanel Orientation="Horizontal">
                 <TextBlock Margin="15,5,5,5">Set min Q:</TextBlock>
                 <TextBox Margin="10,5,5,5" HorizontalAlignment="Left" Width="50" Style="{StaticResource ErrorValidationTextBox}"
-                         MaxLength="7" behaviors:WatermarkBehavior.WatermarkText="Min quantity in market order" MinWidth="165">
+                         MaxLength="7" behaviors:WatermarkBehavior.WatermarkText="0000000" MinWidth="55">
                     <TextBox.Text>
                         <Binding Path="SetMinQ">
                             <Binding.ValidationRules>

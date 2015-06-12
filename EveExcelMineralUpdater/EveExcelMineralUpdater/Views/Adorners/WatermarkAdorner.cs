@@ -33,6 +33,7 @@ namespace EveExcelMineralUpdater.Views.Adorners
             // Watermark Style
             _contentPresenter = new ContentPresenter();
             _watermarkTextBlock.Text = WatermarkText;
+            _watermarkTextBlock.FontStyle = FontStyles.Italic;
             _contentPresenter.Content = _watermarkTextBlock;
             _contentPresenter.Opacity = 0.6;
             _contentPresenter.Margin = new Thickness(5, 0, 0, 0);
