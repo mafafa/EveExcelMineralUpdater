@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net;
 using System.Runtime.InteropServices;
@@ -14,12 +15,12 @@ namespace Data.APIRequests
         private uint _setHours = 24;    // API's default value
         private uint _typeID = uint.MaxValue;
         private uint _setMinQ = 1;  // API's default value
-        private uint _regionLimit = uint.MaxValue;
+        private ObservableCollection<uint> _regionLimit;
         private uint _useSystem = uint.MaxValue;
         
         public QuickLookRequest()
         {
-
+            RegionLimit = new ObservableCollection<uint>();
         }
         
         public ReturnDataType DataReturnType
@@ -33,17 +34,21 @@ namespace Data.APIRequests
             {
                 String url = Constants.EVECENTRAL_API_BASE_URL + Constants.QUICKLOOK_HTTP_QUERY_URL;
 
-                if (RegionLimit != uint.MaxValue)
+                url += "typeid=" + TypeID;
+                url += "&setminQ=" + SetMinQ;
+                url += "&sethours=" + SetHours;
+                
+                if (RegionLimit.Count != 0)
                 {
-                    url += "regionlimit=" + RegionLimit;
+                    foreach (uint region in RegionLimit)
+                    {
+                        url += "&regionlimit=" + region;
+                    }    
                 }
                 if (UseSystem != uint.MaxValue)
                 {
                     url += "&usesystem=" + UseSystem;
                 }
-                url += "&setminQ=" + SetMinQ;
-                url += "&sethours=" + SetHours;
-                url += "&typeid=" + TypeID;
 
                 return url;
             }
@@ -88,7 +93,7 @@ namespace Data.APIRequests
             }
         }
 
-        public uint RegionLimit
+        public ObservableCollection<uint> RegionLimit
         {
             get { return _regionLimit; }
             set

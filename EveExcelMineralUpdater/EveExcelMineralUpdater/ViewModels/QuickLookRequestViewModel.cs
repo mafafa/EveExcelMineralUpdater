@@ -25,7 +25,7 @@ namespace EveExcelMineralUpdater.ViewModels
         // Quicklook parameters
         private uint _setHours = 24;
         private uint _setMinQ = 1;
-        private uint _regionLimit;
+        private ObservableCollection<uint> _regionLimit;
         private uint _useSystem;
 
         // QuickLookOnPath parameters
@@ -44,6 +44,7 @@ namespace EveExcelMineralUpdater.ViewModels
         public QuickLookRequestViewModel()
         {
             QuickLookItems = new ObservableCollection<MarketOrder>();
+            RegionLimit = new ObservableCollection<uint>();
             
             SelectedComboBoxItemType = ComboBoxItemTypes.ElementAt(0);
 
@@ -143,7 +144,7 @@ namespace EveExcelMineralUpdater.ViewModels
             }
         }
 
-        public uint RegionLimit
+        public ObservableCollection<uint> RegionLimit
         {
             get { return _regionLimit; }
             set

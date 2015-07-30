@@ -62,6 +62,8 @@
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\QuickLookRequestViewModel.cs" />
     <Compile Include="Views\Adorners\WatermarkAdorner.cs" />
+    <Compile Include="Views\Converters\BaseConverter.cs" />
+    <Compile Include="Views\Converters\StringToUIntListConverter.cs" />
     <Compile Include="Views\QuickLookRequestView.xaml.cs">
       <DependentUpon>QuickLookRequestView.xaml</DependentUpon>
     </Compile>
@@ -138,6 +140,7 @@
       <Name>Helper</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
